@@ -23,7 +23,7 @@ Raw data (Python generator) -> Databricks (ingest -> clean -> grouping by archit
 | Data generator (Python) | Done |
 | Bronze layer (PySpark, batch) | Done |
 | Silver layer (PySpark, batch) | Done |
-| Gold layer (star schema: daily fact table, user and food dimensions) | Planned |
+| Gold layer (star schema: fact_daily_summary, fact_meals, dim_users, dim_foods) | Done |
 | Automated ingestion with Auto Loader | Planned |
 | Data quality with Lakeflow Spark Declarative Pipelines (expectations) | Planned |
 | Governance with Unity Catalog (Data Analyst access to Gold only) | Planned |
@@ -37,3 +37,5 @@ nutrifit-data-platform/
 ├── databricks_notebooks/   # step 1(Bronze), Step 2 Silver) and Step 3(Gold)
 └── security_and_jobs/      # Unity Catalog and job configuration
 ```
+## Notes
+- I have 48 days with meals but no activity, so in 'Fact table' I keep all days with nutrition data (left join). I add has_activit column with true for metrics that need activity data, such as calorie balance.
